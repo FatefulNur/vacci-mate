@@ -73,7 +73,8 @@ class RegistrationForm extends Component implements HasForms
 
         Notification::make()
             ->success()
-            ->title('User has registered successfully!')
+            ->title('Success!')
+            ->body('We will notify you the availability of vaccine.')
             ->seconds(5)
             ->send();
 
