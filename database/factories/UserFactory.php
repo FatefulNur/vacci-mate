@@ -29,8 +29,8 @@ class UserFactory extends Factory
             'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
             'nid' => fake()->numberBetween(0000000000),
-            'phone' => fake()->phoneNumber(),
-            'status' => fake()->randomElement(UserStatus::class),
+            'phone' => '01' . fake()->numberBetween(000000000, 999999999),
+            'status' => UserStatus::NOT_VACCINATED,
             'vaccine_center_id' => VaccineCenter::factory(),
             'email_verified_at' => now(),
             'scheduled_at' => null,
@@ -43,7 +43,8 @@ class UserFactory extends Factory
     public function scheduled(): static
     {
         return $this->state(fn(array $attributes) => [
-            'scheduled_at' => now()->addDay()->addHours(rand(1, 18)),
+            'scheduled_at' => now()->addHours(rand(2, 18)),
+            'status' => 'scheduled',
         ]);
     }
 }
