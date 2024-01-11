@@ -50,6 +50,7 @@ class RegistrationForm extends Component implements HasForms
                     ->required()
                     ->tel()
                     ->startsWith('01')
+                    ->unique()
                     ->rules(['digits:11'])
                     ->label('Phone Number'),
                 Forms\Components\Select::make('vaccine_center_id')
