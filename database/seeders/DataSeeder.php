@@ -15,12 +15,11 @@ class DataSeeder extends Seeder
     public function run(): void
     {
         VaccineCenter::factory(5)
-            ->sequence(fn(Sequence $sequence) => ['limit' => $sequence->index + 1])
-            ->create();
+            ->create(['limit' => 1]);
 
         foreach (range(1, 5) as $index) {
-            User::factory(rand(1, 5))->create(['vaccine_center_id' => $index]);
-            User::factory(rand(1, 5))->scheduled()->create(['vaccine_center_id' => $index]);
+            User::factory(rand(1, 3))->create(['vaccine_center_id' => $index]);
+            User::factory(rand(1, 3))->scheduled()->create(['vaccine_center_id' => $index]);
         }
     }
 }
