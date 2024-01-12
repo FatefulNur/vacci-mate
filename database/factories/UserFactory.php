@@ -43,7 +43,7 @@ class UserFactory extends Factory
     public function scheduled(): static
     {
         return $this->state(fn(array $attributes) => [
-            'scheduled_at' => now()->addHours(rand(2, 18)),
+            'scheduled_at' => now()->subHours(rand(0, 18)),
             'status' => 'scheduled',
         ]);
     }
