@@ -17,8 +17,16 @@ return new class extends Migration {
             $table->string('email')->unique();
             $table->string('nid', 10)->unique();
             $table->string('phone', 11)->unique();
-            $table->string('status', 50)->default(UserStatus::NOT_VACCINATED->value);
-            $table->foreignId('vaccine_center_id')->constrained();
+            $table
+                ->string('status', 50)
+                ->nullable()
+                ->default(UserStatus::NOT_VACCINATED->value);
+            $table
+                ->foreignId('vaccine_center_id')
+                ->nullable()
+                ->constrained();
+            $table->string('password')->nullable();
+            $table->rememberToken();
             $table->timestamp('email_verified_at')->nullable();
             $table->timestamps();
             $table->timestamp('scheduled_at')->nullable();
