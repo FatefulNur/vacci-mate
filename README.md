@@ -38,8 +38,6 @@ To access filament admin panel
 You can use **mailtrap** to set your email configuration testing email in this application. [Here](https://mailtrap.io/blog/send-email-in-laravel/) is the guideline of how to configure mailtrap for laravel.
 After set you email server, you are now ready to test email.
 
-As I am using mail with queue, you must be running command: `php artisan queue:work`. Otherwise the notification for comment will store into the jobs migration.
-
 ## Important
 Run the following commands:
 - `php artisan db:seed --class=DataSeeder`.
