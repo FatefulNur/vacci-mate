@@ -17,6 +17,7 @@ class DataSeeder extends Seeder
         VaccineCenter::factory(5)
             ->create(['limit' => 1]);
 
+        User::factory()->admin()->create();
         foreach (range(1, 5) as $index) {
             User::factory(rand(1, 3))->create(['vaccine_center_id' => $index]);
             User::factory(rand(1, 3))->scheduled()->create(['vaccine_center_id' => $index]);

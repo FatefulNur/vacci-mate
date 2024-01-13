@@ -13,6 +13,7 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
+        User::factory()->admin()->create();
         foreach (range(1, 50) as $index) {
             User::factory(rand(1, 10))->create(['vaccine_center_id' => $index]);
         }

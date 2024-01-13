@@ -31,15 +31,24 @@ class UserFactory extends Factory
             'nid' => fake()->numberBetween(0000000000),
             'phone' => '01' . fake()->numberBetween(000000000, 999999999),
             'status' => UserStatus::NOT_VACCINATED,
-            'vaccine_center_id' => VaccineCenter::factory(),
+            'vaccine_center_id' => null,
             'email_verified_at' => now(),
             'scheduled_at' => null,
         ];
     }
 
-    /**
-     * Indicate that the model's email address should be unverified.
-     */
+    public function admin(): static
+    {
+        return $this->state(fn(array $attributes) => [
+            'name' => 'Admin',
+            'email' => 'admin@test.com',
+            'password' => bcrypt('password'),
+            'status' => null,
+            'nid' => '1234568790',
+            'phone' => '01300000000',
+        ]);
+    }
+
     public function scheduled(): static
     {
         return $this->state(fn(array $attributes) => [
