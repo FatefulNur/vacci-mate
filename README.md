@@ -5,7 +5,7 @@ Vacci-Mate is a vaccine registration application with laravel tasks scheduling f
 ## Installation
 Clone the repo
 ```
-    git clone https://github.com/FatefulNur/vacci-mate.git --single-branch -b feature-1
+    git clone https://github.com/FatefulNur/vacci-mate.git --single-branch -b feature-2
 ```
 
 ## Usage
@@ -45,6 +45,19 @@ Run the following commands:
 - `php artisan queue:work -v`.
 
 **NOTE:** If you are using [mailtrap](https://mailtrap.io/) without subscription, Then don't run `php artisan db:seed` or `php artisan migrate:fresh --seed`. Cause it seeds from DatabaseSeeder class with massive portion of data. And when you run schedule command, it's may throw <mark>550 5.7.0 Too many emails per second</mark> error. Instead you should use `php artisan db:seed --class=DataSeeder`.
+
+## Integration Webhook
+You may set up [zapier](https://zapier.com/) webhook to access request from our application. Zapier is a platform where you can communicate between api to api or software to software. Zapier can trigger an event from thousands of services and can take action or pass payload to another service. To integrate zapier:
+- Create a google form exactly like our application register form. [example](https://forms.gle/Pdy5HKZp4V2DzmiWA)
+- Create a zapier account.
+- Create new zap.
+- Connect trigger with the created google form.
+- Connect webhook action that point to our application endpoint `/webhook/register`.
+- Publish zap.
+
+After that whenever someone response to that google form zapier will automatically trigger an action with payload and user will be registered by our application logic.
+
+**NOTE:** Don't forget that zapier cannot trigger an action to localhost. If you want to test that `/webhook/register` endpoint works, you may use ngrok service to turn localhost into a live server.
 
 ## Greetings
 Thanks for reading.
