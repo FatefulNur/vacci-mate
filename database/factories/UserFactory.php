@@ -28,8 +28,8 @@ class UserFactory extends Factory
         return [
             'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
-            'nid' => fake()->numberBetween(0000000000),
-            'phone' => '01' . fake()->numberBetween(000000000, 999999999),
+            'nid' => fake()->numberBetween(1000000000),
+            'phone' => '01' . fake()->numberBetween(100000000, 999999999),
             'status' => UserStatus::NOT_VACCINATED,
             'vaccine_center_id' => null,
             'email_verified_at' => now(),
