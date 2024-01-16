@@ -2,7 +2,8 @@
 
 namespace App\Console;
 
-use App\Jobs\ProcessVaccination;
+use App\Jobs\ScheduleUser;
+use App\Jobs\VaccinateUser;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -13,7 +14,9 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule): void
     {
-        $schedule->job(new ProcessVaccination)
+        $schedule->job(new VaccinateUser)->hourly();
+
+        $schedule->job(new ScheduleUser)
             ->dailyAt('21:00')
             ->days(Schedule::SUNDAY . "-" . Schedule::THURSDAY);
     }
