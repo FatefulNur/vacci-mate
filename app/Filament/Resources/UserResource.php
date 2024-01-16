@@ -40,6 +40,7 @@ class UserResource extends Resource
                 Tables\Columns\TextColumn::make('nid')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('phone')
+                    ->prefix('0')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('status')
                     ->badge(),
