@@ -6,7 +6,6 @@ use App\Enums\UserStatus;
 use App\Models\VaccineCenter;
 use App\Services\UserService;
 use Illuminate\Bus\Queueable;
-use App\Notifications\UserScheduled;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -36,9 +35,7 @@ class ScheduleUser implements ShouldQueue
                     continue;
                 }
 
-                $userService->markAsScheduled($user);
-
-                $user->notify(new UserScheduled($user));
+                NotifyUser::dispatch($user);
             }
         }
     }
